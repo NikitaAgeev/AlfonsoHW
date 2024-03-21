@@ -1,0 +1,79 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2009.vpi";
+S_0x55d5425870a0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x55d542587230 .scope module, "testbench" "testbench" 3 4;
+ .timescale -11 -12;
+L_0x55d542577030 .functor XNOR 1, L_0x55d542576550, L_0x55d5425ae960, C4<0>, C4<0>;
+L_0x7fe8990b9018 .functor BUFT 1, C4<00000000000000000000000000000010>, C4<0>, C4<0>, C4<0>;
+v0x55d542578030_0 .net/2u *"_ivl_0", 31 0, L_0x7fe8990b9018;  1 drivers
+v0x55d54259e140_0 .net *"_ivl_2", 31 0, L_0x55d5425ae870;  1 drivers
+L_0x7fe8990b9060 .functor BUFT 1, C4<00000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x55d54259e220_0 .net/2u *"_ivl_4", 31 0, L_0x7fe8990b9060;  1 drivers
+v0x55d54259e2e0_0 .net *"_ivl_6", 0 0, L_0x55d5425ae960;  1 drivers
+v0x55d54259e3a0_0 .net "check", 0 0, L_0x55d542577030;  1 drivers
+v0x55d54259e4b0_0 .var "clk", 0 0;
+v0x55d54259e570_0 .var "in", 31 0;
+v0x55d54259e630_0 .net "out", 0 0, L_0x55d542576550;  1 drivers
+E_0x55d54254e680 .event posedge, v0x55d54259e4b0_0;
+L_0x55d5425ae870 .arith/mod 32, v0x55d54259e570_0, L_0x7fe8990b9018;
+L_0x55d5425ae960 .cmp/eq 32, L_0x55d5425ae870, L_0x7fe8990b9060;
+S_0x55d54254dcf0 .scope module, "ev" "is_even" 3 10, 4 1 0, S_0x55d542587230;
+ .timescale -11 -12;
+    .port_info 0 /INPUT 32 "in";
+    .port_info 1 /OUTPUT 1 "even";
+L_0x55d542576550 .functor NOT 1, L_0x55d54259e6d0, C4<0>, C4<0>, C4<0>;
+v0x55d542576670_0 .net *"_ivl_1", 0 0, L_0x55d54259e6d0;  1 drivers
+v0x55d542577150_0 .net "even", 0 0, L_0x55d542576550;  alias, 1 drivers
+v0x55d5425778c0_0 .net "in", 31 0, v0x55d54259e570_0;  1 drivers
+L_0x55d54259e6d0 .part v0x55d54259e570_0, 0, 1;
+    .scope S_0x55d542587230;
+T_0 ;
+    %delay 50, 0;
+    %load/vec4 v0x55d54259e4b0_0;
+    %inv;
+    %store/vec4 v0x55d54259e4b0_0, 0, 1;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x55d542587230;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55d54259e4b0_0, 0, 1;
+    %vpi_func 3 21 "$random" 32 {0 0 0};
+    %store/vec4 v0x55d54259e570_0, 0, 32;
+    %wait E_0x55d54254e680;
+    %vpi_call/w 3 23 "$display", "%d| n  = %d, ev: %d", v0x55d54259e3a0_0, v0x55d54259e570_0, v0x55d54259e630_0 {0 0 0};
+    %vpi_func 3 25 "$random" 32 {0 0 0};
+    %store/vec4 v0x55d54259e570_0, 0, 32;
+    %wait E_0x55d54254e680;
+    %vpi_call/w 3 27 "$display", "%d| n  = %d, ev: %d", v0x55d54259e3a0_0, v0x55d54259e570_0, v0x55d54259e630_0 {0 0 0};
+    %vpi_func 3 29 "$random" 32 {0 0 0};
+    %store/vec4 v0x55d54259e570_0, 0, 32;
+    %wait E_0x55d54254e680;
+    %vpi_call/w 3 31 "$display", "%d| n  = %d, ev: %d", v0x55d54259e3a0_0, v0x55d54259e570_0, v0x55d54259e630_0 {0 0 0};
+    %vpi_func 3 33 "$random" 32 {0 0 0};
+    %store/vec4 v0x55d54259e570_0, 0, 32;
+    %wait E_0x55d54254e680;
+    %vpi_call/w 3 35 "$display", "%d| n  = %d, ev: %d", v0x55d54259e3a0_0, v0x55d54259e570_0, v0x55d54259e630_0 {0 0 0};
+    %vpi_func 3 37 "$random" 32 {0 0 0};
+    %store/vec4 v0x55d54259e570_0, 0, 32;
+    %wait E_0x55d54254e680;
+    %vpi_call/w 3 39 "$display", "%d| n  = %d, ev: %d", v0x55d54259e3a0_0, v0x55d54259e570_0, v0x55d54259e630_0 {0 0 0};
+    %vpi_call/w 3 41 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "testbench.sv";
+    "./is_even.v";
